@@ -1,6 +1,7 @@
+use std::fmt::{self, Debug, Formatter};
+
 use super::BlockHash;
 
-#[derive(Debug)]
 pub struct Block {
     pub index: u32,
     pub timestamp: u128,
@@ -8,6 +9,19 @@ pub struct Block {
     pub previous_hash: BlockHash,
     pub nonce: u64,
     pub payload: String,
+}
+
+impl Debug for Block {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "Block {{ index: {}, timestamp: {}, hash: {:?}, previous_hash: {:?}, nonce: {}, payload: {} }}", 
+            &self.index,
+            &self.timestamp,
+            &hex::encode(&self.hash),
+            &self.previous_hash,
+            &self.nonce,
+            &self.payload
+        )
+    }
 }
 
 impl Block {

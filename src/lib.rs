@@ -1,3 +1,3 @@
 pub mod block;
 
-type BlockHash = Vec<u32>;
+type BlockHash = Vec<u8>;
